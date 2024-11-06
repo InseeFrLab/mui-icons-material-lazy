@@ -1,0 +1,1 @@
+@onyxia-ui/icons
