@@ -8,7 +8,7 @@
         "declaration": true,
         // Do not change or the linking script will stop working
         "outDir": "./dist",
-        "sourceMap": true,
+        "sourceMap": false,
         "newLine": "LF",
         "noUnusedLocals": true,
         "noUnusedParameters": true,

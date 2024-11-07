@@ -15,7 +15,6 @@ export function cleanup(params: { distDirPath: string }) {
             if (fileRelativePath === "package.json") {
                 return { modifiedSourceCode: sourceCode };
             }
-
             return undefined;
         }
     });

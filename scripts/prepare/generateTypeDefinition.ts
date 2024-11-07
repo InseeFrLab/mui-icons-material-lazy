@@ -1,10 +1,9 @@
 // Generate material icons type
 // Put the material-icons folder in the public dir of storybook
 
-import { join as pathJoin } from "path";
 import fs from "fs";
-import { muiComponentNameToFileName } from "onyxia-ui/lib/icon";
 import { assert } from "tsafe/assert";
+import { muiComponentNameToFileName } from "../../src/muiComponentNameToFileName";
 
 export function generateTypeDefinition(params: { iconsDirPath: string; targetTsFilePath: string }) {
     const { iconsDirPath, targetTsFilePath } = params;
