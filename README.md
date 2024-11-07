@@ -5,8 +5,8 @@
     <i>Collection of Material Design icons for use with onyxia-ui</i>
     <br>
     <br>
-    <a href="https://github.com/garronej/onyxia-ui-icons/actions">
-      <img src="https://github.com/garronej/onyxia-ui-icons/actions/workflows/ci.yaml/badge.svg?branch=main">
+    <a href="https://github.com/InseeFrLab/onyxia-ui-icons/actions">
+      <img src="https://github.com/InseeFrLab/onyxia-ui-icons/actions/workflows/ci.yaml/badge.svg?branch=main">
     </a>
     <a href="https://bundlephobia.com/package/onyxia-ui-icons">
       <img src="https://img.shields.io/bundlephobia/minzip/onyxia-ui-icons">
@@ -14,14 +14,14 @@
     <a href="https://www.npmjs.com/package/onyxia-ui-icons">
       <img src="https://img.shields.io/npm/dw/onyxia-ui-icons">
     </a>
-    <a href="https://github.com/garronej/onyxia-ui-icons/blob/main/LICENSE">
+    <a href="https://github.com/InseeFrLab/onyxia-ui-icons/blob/main/LICENSE">
       <img src="https://img.shields.io/npm/l/onyxia-ui-icons">
     </a>
 </p>
 <p align="center">
-  <a href="https://github.com/garronej/onyxia-ui-icons">Home</a>
+  <a href="https://github.com/InseeFrLab/onyxia-ui-icons">Home</a>
   -
-  <a href="https://github.com/garronej/onyxia-ui-icons">Documentation</a>
+  <a href="https://github.com/InseeFrLab/onyxia-ui-icons">Documentation</a>
 </p>
 
 # Install / Import
@@ -58,7 +58,7 @@ cd my-app
 yarn
 
 cd ~/github
-git clone https://github.com/garronej/onyxia-ui-icons
+git clone https://github.com/InseeFrLab/onyxia-ui-icons
 cd onyxia-ui-icons
 yarn
 yarn build
