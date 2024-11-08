@@ -1,5 +1,5 @@
 import { downloadMaterialIcons } from "./downloadMaterialIcons";
-import { getProjectRoot } from "../tools/getProjectRoot";
+import { getThisCodebaseRootDirPath } from "../../src/bin/tools/getThisCodebaseRootDirPath";
 import { join as pathJoin } from "path";
 import { generateTypeDefinition } from "./generateTypeDefinition";
 import { ICONS_DIR_BASENAME } from "../shared/constants";
@@ -8,7 +8,7 @@ import { ICONS_DIR_BASENAME } from "../shared/constants";
     const start = Date.now();
     console.log("Downloading material icons...");
 
-    const iconsDirPath = pathJoin(getProjectRoot(), ICONS_DIR_BASENAME);
+    const iconsDirPath = pathJoin(getThisCodebaseRootDirPath(), ICONS_DIR_BASENAME);
 
     await downloadMaterialIcons({
         destDirPath: iconsDirPath
@@ -18,6 +18,6 @@ import { ICONS_DIR_BASENAME } from "../shared/constants";
 
     generateTypeDefinition({
         iconsDirPath,
-        targetTsFilePath: pathJoin(getProjectRoot(), "src", "MuiIconComponentName.d.ts")
+        targetTsFilePath: pathJoin(getThisCodebaseRootDirPath(), "src", "MuiIconComponentName.d.ts")
     });
 })();

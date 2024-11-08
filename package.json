@@ -1,10 +1,13 @@
 {
-    "name": "@onyxia-ui/icons",
+    "name": "mui-icons-material-lazy",
     "version": "0.0.0",
     "description": "Collection of Material Design icons for use with onyxia-ui",
     "repository": {
         "type": "git",
         "url": "git://github.com/InseeFrLab/onyxia-ui-icons.git"
+    },
+    "bin": {
+        "copy-material-icons-to-public": "dist/bin/copy-material-icons-to-public.js"
     },
     "scripts": {
         "prepare": "tsx scripts/prepare/main.ts",
@@ -40,6 +43,9 @@
     ],
     "keywords": [],
     "homepage": "https://github.com/InseeFrLab/onyxia-ui-icons",
+    "dependencies": {
+        "tsafe": "^1.7.5"
+    },
     "devDependencies": {
         "@types/make-fetch-happen": "^10.0.4",
         "@types/node": "^22.9.0",

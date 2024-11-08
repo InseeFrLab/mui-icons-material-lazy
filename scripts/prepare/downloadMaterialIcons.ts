@@ -1,6 +1,6 @@
 import { join as pathJoin } from "path";
 import * as fs from "fs";
-import { getProjectRoot } from "../tools/getProjectRoot";
+import { getThisCodebaseRootDirPath } from "../../src/bin/tools/getThisCodebaseRootDirPath";
 import { downloadAndUnzip } from "../tools/downloadAndUnzip";
 import { transformCodebase } from "../tools/transformCodebase";
 
@@ -19,7 +19,7 @@ export async function downloadMaterialIcons(params: { destDirPath: string }) {
         destDirPath: materialIconsDirPath,
         specificDirsToExtract: [`material-ui-${version}/packages/mui-icons-material/material-icons`],
         doUseCache: true,
-        projectDirPath: getProjectRoot()
+        projectDirPath: getThisCodebaseRootDirPath()
     });
 
     transformCodebase({

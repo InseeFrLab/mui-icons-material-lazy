@@ -1,90 +1,85 @@
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/6702424/80216211-00ef5280-863e-11ea-81de-59f3a3d4b8e4.png">  
-</p>
-<p align="center">
-    <i>Collection of Material Design icons for use with onyxia-ui</i>
-    <br>
-    <br>
-    <a href="https://github.com/InseeFrLab/onyxia-ui-icons/actions">
-      <img src="https://github.com/InseeFrLab/onyxia-ui-icons/actions/workflows/ci.yaml/badge.svg?branch=main">
-    </a>
-    <a href="https://bundlephobia.com/package/onyxia-ui-icons">
-      <img src="https://img.shields.io/bundlephobia/minzip/onyxia-ui-icons">
-    </a>
-    <a href="https://www.npmjs.com/package/onyxia-ui-icons">
-      <img src="https://img.shields.io/npm/dw/onyxia-ui-icons">
-    </a>
-    <a href="https://github.com/InseeFrLab/onyxia-ui-icons/blob/main/LICENSE">
-      <img src="https://img.shields.io/npm/l/onyxia-ui-icons">
-    </a>
-</p>
-<p align="center">
-  <a href="https://github.com/InseeFrLab/onyxia-ui-icons">Home</a>
-  -
-  <a href="https://github.com/InseeFrLab/onyxia-ui-icons">Documentation</a>
-</p>
+# mui-icons-material-lazy
 
-# Install / Import
+This NPM module is meant to be used in conjunction with [`onyxia-ui`](https://github.com/InseeFrLab/onyxia-ui)
+The idea behind it is to be ables to use [the `@mui/icons-material` catalog of icons](https://mui.com/material-ui/material-icons/) even if
+the icons that will be used aren't known at build time.
+
+Since including all 2000+ icons in the bundle would make the bundle size explode there is a need for a solution that enables to load the icons lazily
+when they are needed.
+
+It's a requirement we have for the [Onyxia project](https://github.com/InseeFrLab/onyxia) because the web application is distributed as a white-labeled
+statical SPA. People that deploy an onyxia instance [can customize the look of onyxia](https://docs.onyxia.sh/admin-doc/theme) via injecting standardized
+environnement variable.  
+This means that we can't know at build time which icons will be used.
+
+# Usage
 
 ```bash
-$ npm install --save onyxia-ui-icons
+yarn add mui-icons-material-lazy
 ```
 
-```typescript
-import { myFunction, myObject, MyReactComponent } from "onyxia-ui-icons";
+`package.json`
+
+```jsonc
+{
+    "scripts": {
+        "postinstall": "mui-icons-material-lazy postinstall"
+        // If you are in a monorepo you can specify your SPA (Vite or CRA) project path like:
+        // "postinstall": "mui-icons-material-lazy postinstall --project packages/front
+    }
+}
 ```
 
-Specific imports, only import what you need:
+```tsx
+import { createGetIconUrl } from "mui-icons-material-lazy";
 
-```typescript
-import { myFunction } from "onyxia-ui-icons/myFunction";
-import { myObject } from "onyxia-ui-icons/myObject";
-import MyReactComponent from "onyxia-ui-icons/MyReactComponent";
+const { getIconUrl } = createGetIconUrl({
+    BASE_URL: import.meta.env.BASE_URL
+    // Or if you are in create-react-app:
+    // BASE_URL: process.env.PUBLIC_URL,
+    // Or if you have a custom build setup:
+    // BASE_URL: "/",
+});
+
+// The MUI icons are referenced by their component name,
+// you can browse the list of available icons here: https://mui.com/material-ui/material-icons/
+getIconUrl("Home"); // Will give "https://my-app.com/mui-icons-material/Home.svg";
+
+// Let's say we have this variable that isn't known at build time:
+declare;
+HOME_ICON: string | undefined;
+
+getIconUrl(HOME_ICON, "Home" /* fallback */);
+// If HOME_ICON is undefined or "":                     "https://my-app.com/mui-icons-material/Home.svg"
+// If HOME_ICON is "https://example.net/my-icon.svg":   "https://example.net/my-icon.svg"
+// If HOME_ICON is "Home" or "home":                    "https://my-app.com/mui-icons-material/Home.svg"
 ```
 
-# Contributing
+## Usage in `onyxia-ui`
 
-## Testing your changes in an external app
+`src/theme.tsx`
 
-You have made some changes to the code and you want to test them
-in your app before submitting a pull request?
+```tsx
+import { createOnyxiaUi } from "onyxia-ui";
+import { createGetIconUrl } from "mui-icons-material-lazy";
 
-Assuming `you/my-app` have `onyxia-ui-icons` as a dependency.
+const { OnyxiaUi, ofTypeTheme } = createOnyxiaUi({});
 
-```bash
-cd ~/github
-git clone https://github.com/you/my-app
-cd my-app
-yarn
+export { OnyxiaUi };
 
-cd ~/github
-git clone https://github.com/InseeFrLab/onyxia-ui-icons
-cd onyxia-ui-icons
-yarn
-yarn build
-yarn link-in-app my-app
-npx tsc -w
+export type Theme = typeof ofTypeTheme;
 
-# Open another terminal
-
-cd ~/github/my-app
-rm -rf node_modules/.cache
-yarn start # Or whatever my-app is using for starting the project
+export const { getIconUrl } = createGetIconUrl({
+    BASE_URL: import.meta.env.BASE_URL
+});
 ```
 
-You don't have to use `~/github` as reference path. Just make sure `my-app` and `onyxia-ui-icons`
-are in the same directory.
+In a component:
 
-> Note for the maintainer: You might run into issues if you do not list all your singleton dependencies in
-> `src/link-in-app.js -> singletonDependencies`. A singleton dependency is a dependency that can
-> only be present once in an App. Singleton dependencies are usually listed as peerDependencies example `react`, `@emotion/*`.
+```tsx
+import { Icon } from "onyxia-ui/Icon";
+import { getIconUrl } from "theme";
 
-## Releasing
-
-For releasing a new version on GitHub and NPM you don't need to create a tag.  
-Just update the `package.json` version number and push.
-
-For publishing a release candidate update your `package.json` with `1.3.4-rc.0` (`.1`, `.2`, ...).  
-It also work if you do it from a branch that have an open PR on main.
-
-> Make sure your have defined the `NPM_TOKEN` repository secret or NPM publishing will fail.
+<Icon icon={getIconUrl("Home")} />
+<Icon icon={getIconUrl(SOME_ICON, "Home")} />
+```
