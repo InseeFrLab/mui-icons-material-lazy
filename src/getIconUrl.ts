@@ -10,7 +10,7 @@ export function createGetIconUrl(params: { BASE_URL: string }) {
     const { BASE_URL } = params;
 
     function getIconUrlByName(muiIconComponentName: MuiIconComponentName): string {
-        return `${BASE_URL.replace(/\/$/, "/")}${id<typeof ofType_ICONS_DIR_BASENAME>("mui-icons-material")}/${muiComponentNameToFileName(muiIconComponentName)}`;
+        return `${BASE_URL.replace(/^\/?/, "/").replace(/\/?$/, "/")}${id<typeof ofType_ICONS_DIR_BASENAME>("mui-icons-material")}/${muiComponentNameToFileName(muiIconComponentName)}`;
     }
 
     function getIconUrl(muiComponentNameOrUrl: string): string;
