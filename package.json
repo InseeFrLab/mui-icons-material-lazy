@@ -4,7 +4,7 @@
     "description": "Collection of Material Design icons for use with onyxia-ui",
     "repository": {
         "type": "git",
-        "url": "git://github.com/InseeFrLab/mui-icons-material.git"
+        "url": "git://github.com/InseeFrLab/mui-icons-material-lazy.git"
     },
     "bin": {
         "mui-icons-material-lazy": "dist/bin/main.js"
@@ -41,7 +41,7 @@
         "!dist/tsconfig.tsbuildinfo"
     ],
     "keywords": [],
-    "homepage": "https://github.com/InseeFrLab/mui-icons-material",
+    "homepage": "https://github.com/InseeFrLab/mui-icons-material-lazy",
     "dependencies": {
         "tsafe": "^1.7.5"
     },
