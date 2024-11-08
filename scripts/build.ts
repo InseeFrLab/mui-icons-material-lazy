@@ -37,7 +37,7 @@ import { ICONS_DIR_BASENAME } from "../src/bin/constants";
         }
     });
 
-    fs.rmSync(pathJoin(distDirPath, "ncc_out"), { recursive: true });
+    fs.rmSync(pathJoin(distDirPath, "bin", "ncc_out"), { recursive: true });
 
     fs.chmodSync(
         pathJoin(distDirPath, "bin", "main.js"),

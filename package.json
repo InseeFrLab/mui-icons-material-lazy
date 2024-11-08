@@ -36,7 +36,6 @@
     "author": "u/garronej",
     "license": "MIT",
     "files": [
-        "mui-icons-material/",
         "src/",
         "dist/",
         "!dist/tsconfig.tsbuildinfo"

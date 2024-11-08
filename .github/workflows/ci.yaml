@@ -83,6 +83,27 @@ jobs:
     - run: npx -y -p denoify@1.6.13 enable_short_npm_import_path
       env:
         DRY_RUN: "0"
+    - run: |
+        cat << EOF > ./patch.js
+
+        const fs = require("fs");
+        const packageJsonParsed = JSON.parse(fs.readFileSync("package.json").toString("utf8"));
+        const files_before = packageJsonParsed["files"];
+        const ICONS_DIR_BASENAME = "mui-icons-material";
+        const files_filtered = files_before.filter(path => !path.startsWith(ICONS_DIR_BASENAME));
+        if (files_filtered.length === files_before.length) {
+            console.log("This script needs to be updated");
+            process.exit(-1);
+        }
+        packageJsonParsed["files"] = [...files_filtered, ICONS_DIR_BASENAME];
+        fs.writeFileSync("package.json", JSON.stringify(packageJsonParsed, null, 2));
+
+        EOF
+
+        node ./patch.js
+
+        rm ./patch.js
+
     - uses: garronej/ts-ci@v2.1.5
       with: 
         action_name: remove_dark_mode_specific_images_from_readme
