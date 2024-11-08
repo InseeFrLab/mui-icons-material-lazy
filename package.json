@@ -36,7 +36,11 @@
         "dist/",
         "!dist/tsconfig.tsbuildinfo"
     ],
-    "keywords": [],
+    "keywords": [
+        "material design",
+        "icons",
+        "onyxia-ui"
+    ],
     "homepage": "https://github.com/InseeFrLab/mui-icons-material-lazy",
     "dependencies": {
         "tsafe": "^1.7.5"
