@@ -18,6 +18,6 @@ import { ICONS_DIR_BASENAME } from "../../src/bin/constants";
 
     generateTypeDefinition({
         iconsDirPath,
-        targetTsFilePath: pathJoin(getThisCodebaseRootDirPath(), "src", "MuiIconComponentName.d.ts")
+        targetTsFilePath: pathJoin(getThisCodebaseRootDirPath(), "src", "MuiIconComponentName.ts")
     });
 })();

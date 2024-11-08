@@ -43,4 +43,4 @@ jspm_packages
 /.yarn_home
 /dist
 /mui-icons-material
-/src/MuiIconComponentName.d.ts
+/src/MuiIconComponentName.ts
