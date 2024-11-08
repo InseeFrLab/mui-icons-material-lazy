@@ -2,7 +2,7 @@ import { downloadMaterialIcons } from "./downloadMaterialIcons";
 import { getThisCodebaseRootDirPath } from "../../src/bin/tools/getThisCodebaseRootDirPath";
 import { join as pathJoin } from "path";
 import { generateTypeDefinition } from "./generateTypeDefinition";
-import { ICONS_DIR_BASENAME } from "../shared/constants";
+import { ICONS_DIR_BASENAME } from "../../src/bin/constants";
 
 (async () => {
     const start = Date.now();

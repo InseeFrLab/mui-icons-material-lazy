@@ -5,7 +5,7 @@ import fetch, { type FetchOptions } from "make-fetch-happen";
 import { dirname as pathDirname, join as pathJoin, resolve as pathResolve, sep as pathSep } from "path";
 import { assert } from "tsafe/assert";
 import { promisify } from "util";
-import { transformCodebase } from "./transformCodebase";
+import { transformCodebase } from "../../src/bin/tools/transformCodebase";
 import { unzip, zip } from "./unzip";
 
 const exec = promisify(execCallback);

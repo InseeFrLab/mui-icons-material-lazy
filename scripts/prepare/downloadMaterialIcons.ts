@@ -2,7 +2,7 @@ import { join as pathJoin } from "path";
 import * as fs from "fs";
 import { getThisCodebaseRootDirPath } from "../../src/bin/tools/getThisCodebaseRootDirPath";
 import { downloadAndUnzip } from "../tools/downloadAndUnzip";
-import { transformCodebase } from "../tools/transformCodebase";
+import { transformCodebase } from "../../src/bin/tools/transformCodebase";
 
 export async function downloadMaterialIcons(params: { destDirPath: string }) {
     const { destDirPath: materialIconsDirPath } = params;

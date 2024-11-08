@@ -22,7 +22,7 @@ function parseCliCommandOptions(cliCommandOptions: CliCommandOptions) {
 
 const program = termost<CliCommandOptions>(
     {
-        name: "onyxia-ui-icons",
+        name: "mui-icons-material",
         description: "mui-icons-material-lazy CLI",
         version: readThisNpmPackageVersion()
     },
@@ -48,7 +48,7 @@ program.option({
     })(),
     description: [
         `For monorepos, path to the keycloakify project.`,
-        "Example: `npx onyxia-ui-icons postinstall --project packages/frontend`"
+        "Example: `npx mui-icons-material postinstall --project packages/frontend`"
     ].join(" "),
     defaultValue: undefined
 });

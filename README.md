@@ -33,7 +33,7 @@ yarn add mui-icons-material-lazy
 ```tsx
 import { createGetIconUrl } from "mui-icons-material-lazy";
 
-const { getIconUrl } = createGetIconUrl({
+const { getIconUrl, getIconUrlByName } = createGetIconUrl({
     BASE_URL: import.meta.env.BASE_URL
     // Or if you are in create-react-app:
     // BASE_URL: process.env.PUBLIC_URL,
@@ -41,18 +41,17 @@ const { getIconUrl } = createGetIconUrl({
     // BASE_URL: "/",
 });
 
-// The MUI icons are referenced by their component name,
-// you can browse the list of available icons here: https://mui.com/material-ui/material-icons/
-getIconUrl("Home"); // Will give "https://my-app.com/mui-icons-material/Home.svg";
-
 // Let's say we have this variable that isn't known at build time:
-declare;
-HOME_ICON: string | undefined;
+declare const HOME_ICON: string | undefined;
 
-getIconUrl(HOME_ICON, "Home" /* fallback */);
-// If HOME_ICON is undefined or "":                     "https://my-app.com/mui-icons-material/Home.svg"
+getIconUrl(HOME_ICON); // The return type is `string | undefined`
 // If HOME_ICON is "https://example.net/my-icon.svg":   "https://example.net/my-icon.svg"
 // If HOME_ICON is "Home" or "home":                    "https://my-app.com/mui-icons-material/Home.svg"
+
+// Implementing fallback:
+
+// iconUrl is of type `string`
+const iconUrl = getIconUrl(HOME_ICON) ?? getIconUrlByName("Home");
 ```
 
 ## Usage in `onyxia-ui`
@@ -69,7 +68,7 @@ export { OnyxiaUi };
 
 export type Theme = typeof ofTypeTheme;
 
-export const { getIconUrl } = createGetIconUrl({
+export const { getIconUrl, getIconUrlByName } = createGetIconUrl({
     BASE_URL: import.meta.env.BASE_URL
 });
 ```
@@ -78,8 +77,15 @@ In a component:
 
 ```tsx
 import { Icon } from "onyxia-ui/Icon";
-import { getIconUrl } from "theme";
+import { getIconUrl, getIconUrlByName } from "theme";
 
-<Icon icon={getIconUrl("Home")} />
-<Icon icon={getIconUrl(SOME_ICON, "Home")} />
+declare;
+SOME_ICON: string;
+
+<Icon icon={getIconUrl(SOME_ICON)} />;
+
+declare;
+MAYBE_SOME_ICON: string | undefined;
+
+<Icon icon={getIconUrl(MAYBE_SOME_ICON) ?? getIconUrlByName("Home")} />;
 ```

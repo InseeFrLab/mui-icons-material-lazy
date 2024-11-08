@@ -4,10 +4,10 @@
     "description": "Collection of Material Design icons for use with onyxia-ui",
     "repository": {
         "type": "git",
-        "url": "git://github.com/InseeFrLab/onyxia-ui-icons.git"
+        "url": "git://github.com/InseeFrLab/mui-icons-material.git"
     },
     "bin": {
-        "copy-material-icons-to-public": "dist/bin/copy-material-icons-to-public.js"
+        "mui-icons-material-lazy": "dist/bin/main.js"
     },
     "scripts": {
         "prepare": "tsx scripts/prepare/main.ts",
@@ -36,13 +36,13 @@
     "author": "u/garronej",
     "license": "MIT",
     "files": [
-        "onyxia-ui-icons/",
+        "mui-icons-material/",
         "src/",
         "dist/",
         "!dist/tsconfig.tsbuildinfo"
     ],
     "keywords": [],
-    "homepage": "https://github.com/InseeFrLab/onyxia-ui-icons",
+    "homepage": "https://github.com/InseeFrLab/mui-icons-material",
     "dependencies": {
         "tsafe": "^1.7.5"
     },
@@ -58,7 +58,10 @@
         "tsx": "^4.15.5",
         "typescript": "^5.4.5",
         "yauzl": "^3.2.0",
-        "yazl": "^3.2.1"
+        "yazl": "^3.2.1",
+        "zod": "^3.23.8",
+        "termost": "^0.12.1",
+        "@vercel/ncc": "^0.38.2"
     },
     "publishConfig": {
         "access": "public"
