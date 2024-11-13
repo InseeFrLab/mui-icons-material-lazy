@@ -79,13 +79,11 @@ In a component:
 import { Icon } from "onyxia-ui/Icon";
 import { getIconUrl, getIconUrlByName } from "theme";
 
-declare;
-SOME_ICON: string;
+declare const SOME_ICON: string;
 
 <Icon icon={getIconUrl(SOME_ICON)} />;
 
-declare;
-MAYBE_SOME_ICON: string | undefined;
+declare const MAYBE_SOME_ICON: string | undefined;
 
 <Icon icon={getIconUrl(MAYBE_SOME_ICON) ?? getIconUrlByName("Home")} />;
 ```
