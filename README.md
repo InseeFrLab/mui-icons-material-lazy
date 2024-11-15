@@ -1,7 +1,6 @@
 # mui-icons-material-lazy
 
-This NPM module is meant to be used in conjunction with [`onyxia-ui`](https://github.com/InseeFrLab/onyxia-ui)
-The idea behind it is to be ables to use [the `@mui/icons-material` catalog of icons](https://mui.com/material-ui/material-icons/) even if
+The idea behind this NPM lib is to be ables to use [the `@mui/icons-material` catalog of icons](https://mui.com/material-ui/material-icons/) even if
 the icons that will be used aren't known at build time.
 
 Since including all 2000+ icons in the bundle would make the bundle size explode there is a need for a solution that enables to load the icons lazily
@@ -56,18 +55,9 @@ const iconUrl = getIconUrl(HOME_ICON) ?? getIconUrlByName("Home");
 
 ## Usage in `onyxia-ui`
 
-`src/theme.tsx`
+`src/lazy-icons`
 
 ```tsx
-import { createOnyxiaUi } from "onyxia-ui";
-import { createGetIconUrl } from "mui-icons-material-lazy";
-
-const { OnyxiaUi, ofTypeTheme } = createOnyxiaUi({});
-
-export { OnyxiaUi };
-
-export type Theme = typeof ofTypeTheme;
-
 export const { getIconUrl, getIconUrlByName } = createGetIconUrl({
     BASE_URL: import.meta.env.BASE_URL
 });
@@ -77,7 +67,8 @@ In a component:
 
 ```tsx
 import { Icon } from "onyxia-ui/Icon";
-import { getIconUrl, getIconUrlByName } from "theme";
+// Absolute import using ts-config-paths and baseUrl: "./src"
+import { getIconUrl, getIconUrlByName } from "lazy-icons";
 
 declare const SOME_ICON: string;
 
