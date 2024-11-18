@@ -43,7 +43,7 @@
     ],
     "homepage": "https://github.com/InseeFrLab/mui-icons-material-lazy",
     "dependencies": {
-        "tsafe": "^1.7.5"
+        "tsafe": "^1.8.5"
     },
     "devDependencies": {
         "@types/make-fetch-happen": "^10.0.4",

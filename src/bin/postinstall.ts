@@ -5,8 +5,7 @@ import { ICONS_DIR_BASENAME } from "./constants";
 import { getThisCodebaseRootDirPath } from "./tools/getThisCodebaseRootDirPath";
 import { readThisNpmPackageVersion } from "./tools/readThisNpmPackageVersion";
 import { z } from "zod";
-import { assert, type Equals } from "tsafe/assert";
-import { is } from "tsafe/is";
+import { assert, type Equals, is } from "tsafe/assert";
 import { transformCodebase } from "./tools/transformCodebase";
 import { id } from "tsafe/id";
 

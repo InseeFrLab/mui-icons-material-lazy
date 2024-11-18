@@ -1551,10 +1551,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tsafe@^1.7.5:
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/tsafe/-/tsafe-1.7.5.tgz#0d3a31202b5ef87c7ba997e66e03fd80801278ef"
-  integrity sha512-tbNyyBSbwfbilFfiuXkSOj82a6++ovgANwcoqBAcO9/REPoZMEQoE8kWPeO0dy5A2D/2Lajr8Ohue5T0ifIvLQ==
+tsafe@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/tsafe/-/tsafe-1.8.5.tgz#cdf9fa3111974ac480d7ee519f8241815e5d22ea"
+  integrity sha512-LFWTWQrW6rwSY+IBNFl2ridGfUzVsPwrZ26T4KUJww/py8rzaQ/SY+MIz6YROozpUCaRcuISqagmlwub9YT9kw==
 
 tslib@^1.9.0:
   version "1.14.1"
