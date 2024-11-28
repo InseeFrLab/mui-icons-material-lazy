@@ -3,8 +3,7 @@ import { muiComponentNameToFileName } from "./muiComponentNameToFileName";
 import type { ICONS_DIR_BASENAME as ofType_ICONS_DIR_BASENAME } from "./bin/constants";
 import { id } from "tsafe/id";
 import { MuiIconComponentName } from "./MuiIconComponentName";
-import { is } from "tsafe";
-import { assert } from "tsafe/assert";
+import { assert, is } from "tsafe/assert";
 
 export function createGetIconUrl(params: { BASE_URL: string }) {
     const { BASE_URL } = params;
