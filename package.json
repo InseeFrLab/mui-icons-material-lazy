@@ -53,7 +53,6 @@
         "lint-staged": "^11.1.1",
         "make-fetch-happen": "^14.0.3",
         "prettier": "^3.3.2",
-        "tsafe": "^1.7.5",
         "tsx": "^4.15.5",
         "typescript": "^5.4.5",
         "yauzl": "^3.2.0",
